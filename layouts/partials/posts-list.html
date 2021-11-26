@@ -1,0 +1,23 @@
+{{ $isPosts := eq .RelPermalink "/posts/" }}
+
+{{ $pages := where site.RegularPages.ByPublishDate.Reverse "Section" "==" "posts" }}
+
+{{ if $isPosts }}
+  {{ $pages = where $pages "Draft" "==" false }}
+{{ else }}
+  {{ $pages = where $pages "Draft" "==" true }}
+{{ end }}
+
+<h1>{{ .Title }}</h1>
+
+<p>
+  <strong>Count:</strong> {{ len $pages }}
+</p>
+
+<ul>
+{{ range $pages }}
+  <li>
+    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+  </li>
+{{ end }}
+</ul>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="{{ site.Language.Lang }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ printf "%s | %s" .Title site.Title }}</title>
+    <style>
+      .container {
+        width: 100%;
+        padding: initial 1rem;
+        margin: initial auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <p>
+          Is this page a draft? {{ .Draft }}
+        </p>
+
+        <ul>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/posts/">Posts</a>
+          </li>
+          <li>
+            <a href="/drafts/">Drafts</a>
+          </li>
+        </ul>
+      </header>
+
+      <hr>
+
+      <main>
+        {{ block "main" . }}{{ end }}
+      </main>
+    </div>
+  </body>
+</html>
