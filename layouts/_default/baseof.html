@@ -6,9 +6,11 @@
     <title>{{ printf "%s | %s" .Title site.Title }}</title>
     <style>
       .container {
-        width: 100%;
-        padding: initial 1rem;
-        margin: initial auto;
+        max-width: 700px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin-left: auto;
+        margin-right: auto;
       }
     </style>
   </head>
@@ -17,8 +19,10 @@
     <div class="container">
       <header>
         <p>
-          Is this page a draft? {{ .Draft }}
+          Is this page a draft? <strong>{{ .Draft }}</strong>
         </p>
+
+        <hr>
 
         <ul>
           <li>
@@ -31,9 +35,9 @@
             <a href="/drafts/">Drafts</a>
           </li>
         </ul>
-      </header>
 
-      <hr>
+        <hr>
+      </header>
 
       <main>
         {{ block "main" . }}{{ end }}
