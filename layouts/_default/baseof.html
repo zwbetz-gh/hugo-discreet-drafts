@@ -4,15 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ printf "%s | %s" .Title site.Title }}</title>
-    <style>
-      .container {
-        max-width: 700px;
-        padding-left: 1rem;
-        padding-right: 1rem;
-        margin-left: auto;
-        margin-right: auto;
-      }
-    </style>
+    {{ $customCss := resources.Get "css/custom.css"
+      | minify
+      | fingerprint }}
+    <link rel="stylesheet"
+      href="{{ $customCss.RelPermalink }}"
+      integrity="{{ $customCss.Data.Integrity }}"
+    >
   </head>
 
   <body>
@@ -42,6 +40,16 @@
       <main>
         {{ block "main" . }}{{ end }}
       </main>
+
+      {{ if eq .Draft true }}
+        {{ $draftJs := resources.Get "js/draft.js"
+          | minify
+          | fingerprint }}
+        <script
+          src="{{ $draftJs.RelPermalink }}"
+          integrity="{{ $draftJs.Data.Integrity }}"
+        ></script>
+      {{ end }}
     </div>
   </body>
 </html>
