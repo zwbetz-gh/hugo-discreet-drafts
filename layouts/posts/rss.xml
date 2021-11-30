@@ -1,1 +1,1 @@
-{{- partial "posts-rss.xml" . -}}
+{{- partial "rss.xml" . -}}
