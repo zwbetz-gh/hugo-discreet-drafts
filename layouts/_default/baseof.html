@@ -3,6 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{ if eq .Draft true }}
+      <meta name="robots" content="noindex">
+    {{ end }}
     <title>{{ printf "%s | %s" .Title site.Title }}</title>
     {{ $customCss := resources.Get "css/custom.css"
       | minify
