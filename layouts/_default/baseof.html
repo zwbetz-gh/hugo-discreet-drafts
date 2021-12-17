@@ -44,6 +44,16 @@
         {{ block "main" . }}{{ end }}
       </main>
 
+      <footer>
+        <hr>
+
+        <p>
+          <a href="https://github.com/zwbetz-gh/hugo-discreet-drafts">
+            Source code
+          </a>
+        </p>
+      </footer>
+
       {{ if eq .Draft true }}
         {{ $draftJs := resources.Get "js/draft.js"
           | minify
