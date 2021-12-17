@@ -38,6 +38,15 @@
     return form;
   };
 
+  const createLabel = () => {
+    const label = document.createElement('label');
+    label.htmlFor = INPUT_ID;
+    label.innerHTML = `Type <strong>${PASSWORD}</strong> then hit <strong>Enter</strong>`;
+    label.style.display = 'block';
+    label.style.marginBottom = '1rem';
+    return label;
+  };
+
   const createInput = () => {
     const input = document.createElement('input');
     input.id = INPUT_ID;
@@ -50,7 +59,9 @@
   const main = () => {
     const div = createDiv();
     const form = createForm();
+    const label = createLabel();
     const input = createInput();
+    form.appendChild(label);
     form.appendChild(input);
     div.appendChild(form);
     document.body.appendChild(div);
